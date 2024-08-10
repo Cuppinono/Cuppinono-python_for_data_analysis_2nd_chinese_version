@@ -21,4 +21,30 @@ git checkout -b 命令获取远程仓库特定分支 -- 执行git checkout -b <�
 	a. git log 查询需要回退版本的commit id
 	b. git reset --hard <commit_id>
 	c. 回退后想强制push到远程分支<HEAD> $ git push origin HEAD -f
+
+20240811
+数据分析针对的数据主要是结构化数据 - structured data，比如：
+	a. 表格型数据
+	b. 多为数组（矩阵）
+	c. 通过关键列相互联系的多个表 - SQL
+	d. 时间序列数据
+Python有一个叫做全局解释器锁（Global Interpreter Lock，GIL）的组件，这是一种防止解释器同时执行多条Python字节码指令的机制。
+	a. 全局解释器锁（Global Interpreter Lock，简称 GIL）是 Python 解释器中的一种机制，主要用于管理多线程环境下	 的内存和数据安全。
+	b. GIL 是一种互斥锁，用于确保在任意时刻只有一个线程能够执行 Python 字节码。这意味着即使在多核CPU上Python解释器也只能同时执行一个线程的 Python 代码。
+	c. GIL工作原理
+		1、互斥锁机制：当一个线程持有GIL时，其他线程必须等待，直到该线程释放GIL。
+		2、时间片：持有GIL的线程会在执行一段时间后释放GIL，允许其他线程获取GIL。
+		3、释放和竞争：当一个线程释放GIL后，其它等待的线程会竞争获取GIL。
+	d. GIL的影响
+		1、CPU 密集型任务：由于 GIL 的存在，多线程无法充分利用多核 CPU，导致 CPU 密集型任务的性能受限。
+		2、IO 密集型任务：在 IO 密集型任务中，线程在等待 IO 操作时会释放 GIL，允许其他线程执行 Python 字节码，因此多线程在这种情况下能发挥一定作用。
+	e. 如何应对 GIL 的限制
+		1、使用多进程：通过 multiprocessing 模块创建多个进程，每个进程有自己的 GIL，从而绕过 GIL 的限制
+		2、使用 C 扩展：将关键部分的代码编写为 C 扩展，这些部分在执行时不受 GIL 的影响
+		3、异步编程：使用异步编程模型（如 asyncio 库）可以减少对线程的依赖，避免 GIL 对程序性能的影响
+	f. 并不是说Python不能执行真正的多线程并行代码。例如，Python的C插件使用原生的C或C++的多线程，可以并行运行而不被GIL影响，只要它们不频繁地与Python对象交互。
+
+数据规整（Munge/Munging/Wrangling） 指的是将非结构化和（或）散乱数据处理为结构化或整洁形式的整个过程。
+
+
  
