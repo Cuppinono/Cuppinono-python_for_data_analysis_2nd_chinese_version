@@ -14,4 +14,11 @@ git checkout -b 命令获取远程仓库特定分支 -- 执行git checkout -b <�
 	b. 进入项目目录，也就是进入master主分支 $ cd springboot-rabbitmq/
 	c. 执行git branch -a查看所有分支名称，* 号表示当前分支
 	d. 执行git checkout -b <本地分支名称> origin/<远程分支名称>，拉取指定的某一个分支 $ git checkout -b dev开发分支 origin/dev开发分支
-	e. 拉取该分支的最新代码 $ git pull origin dev开发分支  
+	e. 拉取该分支的最新代码 $ git pull origin dev开发分支
+在本地分支 <main_local> 做了改动，push到仓库的新建分支<dev1>上，用来区分远程仓库主分支的版本
+	a. git pull origin main_local:dev1
+本地版本回退,会使工作目录，暂存区和本地仓库都回退到指定版本
+	a. git log 查询需要回退版本的commit id
+	b. git reset --hard <commit_id>
+	c. 回退后想强制push到远程分支<HEAD> $ git push origin HEAD -f
+ 
