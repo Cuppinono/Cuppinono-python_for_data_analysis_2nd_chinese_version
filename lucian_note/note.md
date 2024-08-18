@@ -52,4 +52,18 @@ Python 中的简单赋值永远不会复制数据。将列表分配给变量时�
 		rgb = ["Red", "Green", "Blue"]   --- id(rgb) = 数字1(139955995081024)
 		rgba = rgb                       --- id(rgba) = 数字1(139955995081024)
 		correct_rgba = rgb[:]            --- id(correct_rgba) = 数字2(139955995081216)
-		
+
+20240818
+1. list.insert(i, x) 在给定的位置 [i] 插入 an item [x]
+	eg: list = [x0, x1, x2, x3]
+	a. list.insert(len(list), x) == list.append(x)
+2. 列表用作堆栈，遵循后进先出原则，append 进， pop出
+3. matrix = [[1, 2, 3, 4],
+			 [5, 6, 7, 8],
+			 [9, 10, 11, 12]]
+	a. list(zip(*matrix)) --> [(1, 5, 9), (2, 6, 10), (3, 7, 11), (4, 8, 12)]
+	b. *matrix 会将 matrix 解包为三个列表：[1, 2, 3, 4] [5, 6, 7, 8] [9, 10, 11, 12]
+	c. zip(*matrix) 会将对应位置的元素组合在一起
+	d. 最终，zip(*matrix) 会返回一个可迭代的对象（zip 对象），其中包含了转置后的元组。
+	e. 使用 list() 将 zip 对象转换为列表后，结果是：[(1, 5, 9), (2, 6, 10), (3, 7, 11), (4, 8, 12)]
+
